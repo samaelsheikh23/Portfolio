@@ -33,6 +33,25 @@ window.onscroll = () => {
     navbar.classList.remove('active');
 };
 
+// Scroll Reveal Animation (Intersection Observer)
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealOnScroll = entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+};
+
+const observer = new IntersectionObserver(revealOnScroll, {
+    threshold: 0.15
+});
+
+revealElements.forEach(el => {
+    observer.observe(el);
+});
+
 // Auto Scroll Certificates Gallery every 2 seconds
 const slider = document.getElementById('certificatesSlider');
 
@@ -80,7 +99,6 @@ if (closeModal) {
     closeModal.addEventListener('click', closeLightbox);
 }
 
-// إغلاق المودال عند الضغط في أي مكان خارج الصورة
 if (modal) {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -89,7 +107,6 @@ if (modal) {
     });
 }
 
-// إغلاق المودال بزر الـ Escape من لوحة المفاتيح
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.style.display === 'flex') {
         closeLightbox();

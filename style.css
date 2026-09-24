@@ -23,28 +23,23 @@ body {
     overflow-x: hidden;
 }
 
-/* Keyframe Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Scroll Animation Reveal Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keyframe Animations */
 @keyframes floatImage {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
 }
 
 /* Header & Navigation */
@@ -125,7 +120,6 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeInUp 0.8s ease-in-out;
 }
 
 .section-wrapper {
@@ -580,6 +574,7 @@ section {
 .timeline-content p {
     font-size: 13px;
     color: #8b949e;
+    line-height: 1.6;
 }
 
 /* 7. Certificates Gallery Section Styles */
@@ -654,6 +649,9 @@ section {
 
 .cert-info {
     padding: 18px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cert-info h3 {
@@ -666,7 +664,15 @@ section {
 .cert-info p {
     font-size: 13px;
     color: #8b949e;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.cert-info .cert-desc {
+    display: block;
+    font-size: 11px;
+    color: #6e7681;
+    margin-bottom: 12px;
     line-height: 1.4;
 }
 
@@ -749,29 +755,33 @@ section {
     border-color: var(--main-color);
 }
 
-/* 8. Contact Section */
+/* 8. Contact Section (Enhanced Card Styles) */
 .contact {
     background: var(--bg-color);
 }
 
 .contact-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .contact-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
 }
 
 .contact-card {
     background: var(--second-bg-color);
     border: 1px solid var(--border-color);
-    padding: 25px 20px;
-    border-radius: 10px;
+    padding: 30px 20px;
+    border-radius: 12px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .contact-card:hover {
@@ -781,10 +791,12 @@ section {
     background: #1c2331;
 }
 
-.contact-card i {
-    font-size: 30px;
+.contact-card i.fa-envelope,
+.contact-card i.fa-linkedin-in,
+.contact-card i.fa-github {
+    font-size: 35px;
     color: var(--main-color);
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     transition: transform 0.4s ease;
 }
 
@@ -793,14 +805,29 @@ section {
 }
 
 .contact-card h3 {
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .contact-card p {
     font-size: 13px;
     color: #8b949e;
+    margin-bottom: 20px;
+}
+
+.contact-action {
+    font-size: 12px;
+    color: var(--main-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.contact-card:hover .contact-action {
+    gap: 10px;
 }
 
 /* Footer */
